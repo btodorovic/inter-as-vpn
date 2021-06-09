@@ -1,0 +1,5 @@
+edit
+set routing-options resolution rib mpls.0 resolution-ribs inet.0
+set routing-options resolution rib l2circuit.0 resolution-ribs inet.0
+commit and-quit
+quit

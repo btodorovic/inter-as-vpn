@@ -1,0 +1,31 @@
+edit
+rollback
+set interfaces ge-0/0/9 unit 10 vlan-id 10
+set interfaces ge-0/0/9 unit 10 family inet address 100.15.2.1/24
+set interfaces ge-0/0/9 unit 10 family inet6 address 2001:100:15:2::1/64
+set interfaces ge-0/0/9 unit 10 family inet6 address ::ffff:100.15.2.1/126
+set interfaces ge-0/0/9 unit 10 family mpls
+
+set protocols mpls interface ge-0/0/9.10
+
+set protocols bgp group inter-as peer-as 200
+set protocols bgp group inter-as family inet-vpn unicast
+set protocols bgp group inter-as family inet6-vpn unicast
+set protocols bgp group inter-as neighbor 100.15.2.2
+set protocols bgp group inter-as import rt-update
+
+set policy-options policy-statement rt-update term VPN-110 from community RT-VPN-110-REMOTE
+set policy-options policy-statement rt-update term VPN-110 then community add RT-VPN-110
+set policy-options policy-statement rt-update term VPN-120 from community RT-VPN-120-REMOTE
+set policy-options policy-statement rt-update term VPN-120 then community add RT-VPN-120
+set policy-options policy-statement rt-update term VPN-130 from community RT-VPN-130-REMOTE
+set policy-options policy-statement rt-update term VPN-130 then community add RT-VPN-130
+set policy-options community RT-VPN-110 members target:100:110
+set policy-options community RT-VPN-120 members target:100:120
+set policy-options community RT-VPN-130 members target:100:130
+set policy-options community RT-VPN-110-REMOTE members target:200:110
+set policy-options community RT-VPN-120-REMOTE members target:200:120
+set policy-options community RT-VPN-130-REMOTE members target:200:130
+
+commit and-quit
+quit

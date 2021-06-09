@@ -1,0 +1,5 @@
+edit
+set interfaces ge-0/0/1 description "private50 :: rr1 (ge-0/0/1) -- cr1 (ge-0/0/6)"
+set interfaces ge-0/0/2 description "private51 :: rr1 (ge-0/0/2) -- cr2 (ge-0/0/6)"
+commit and-quit
+quit

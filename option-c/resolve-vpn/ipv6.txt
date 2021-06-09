@@ -1,0 +1,4 @@
+edit
+set protocols mpls ipv6-tunneling
+commit and-quit
+quit

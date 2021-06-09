@@ -1,0 +1,52 @@
+!! IOS XR Configuration 5.3.1
+!! Last configuration change at Tue Jan  3 18:28:23 2017 by cisco
+!
+hostname c1
+line default
+ transport input all
+ transport output all
+!
+interface Loopback0
+ ipv4 address 100.0.0.2 255.255.255.255
+!
+interface GigabitEthernet0/0/0/0
+ no shutdown
+ ipv4 address 100.1.0.1 255.255.255.252
+!
+interface GigabitEthernet0/0/0/1
+ no shutdown
+ ipv4 address 100.1.1.2 255.255.255.252
+!
+router static
+ address-family ipv4 unicast
+  10.0.0.0/8 MgmtEth0/0/CPU0/0 10.102.255.254
+  66.129.255.62/32 MgmtEth0/0/CPU0/0 10.102.255.254
+  172.16.0.0/12 MgmtEth0/0/CPU0/0 10.102.255.254
+ !
+!
+router isis bb
+ is-type level-2-only
+ net 49.0001.0001.1100.0002.00
+ address-family ipv4 unicast
+  metric-style wide
+ !
+ interface Loopback0
+  passive
+  address-family ipv4 unicast
+  !
+ !
+ interface GigabitEthernet0/0/0/0
+  point-to-point
+  address-family ipv4 unicast
+   metric 100 level 2
+  !
+ !
+ interface GigabitEthernet0/0/0/1
+  point-to-point
+  address-family ipv4 unicast
+   metric 100 level 2
+  !
+ !
+!
+ssh server v2
+end

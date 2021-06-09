@@ -1,0 +1,78 @@
+edit
+set interfaces ge-0/0/3 unit 110 vlan-id 110
+set interfaces ge-0/0/3 unit 110 family inet address 200.200.210.1/24
+set interfaces ge-0/0/3 unit 110 family inet6 address 2001:200:200:210::1/64
+
+set routing-instances VPN-110 instance-type vrf
+set routing-instances VPN-110 vrf-table-label
+set routing-instances VPN-110 interface ge-0/0/3.110
+set routing-instances VPN-110 route-distinguisher 200.0.0.6:110
+set routing-instances VPN-110 vrf-import VPN-110-IMPORT
+set routing-instances VPN-110 vrf-export VPN-110-EXPORT
+set routing-instances VPN-110 protocols bgp group ebgp-vpn peer-as 110
+set routing-instances VPN-110 protocols bgp group ebgp-vpn as-override
+set routing-instances VPN-110 protocols bgp group ebgp-vpn neighbor 200.200.210.2
+set routing-instances VPN-110 protocols bgp group ebgp-vpnv6 peer-as 110
+set routing-instances VPN-110 protocols bgp group ebgp-vpnv6 neighbor 2001:200:200:210::2
+set routing-instances VPN-110 protocols bgp group ebgp-vpnv6 as-override
+
+set policy-options policy-statement VPN-110-EXPORT term export then community add RT-VPN-110
+set policy-options policy-statement VPN-110-EXPORT term export then accept
+set policy-options policy-statement VPN-110-EXPORT then reject
+set policy-options policy-statement VPN-110-IMPORT term import from community RT-VPN-110
+set policy-options policy-statement VPN-110-IMPORT term import then accept
+set policy-options policy-statement VPN-110-IMPORT then reject
+set policy-options community RT-VPN-110 members target:200:110
+
+set interfaces ge-0/0/3 unit 120 vlan-id 120
+set interfaces ge-0/0/3 unit 120 family inet address 200.200.220.1/24
+set interfaces ge-0/0/3 unit 120 family inet6 address 2001:200:200:220::1/64
+
+set routing-instances VPN-120 instance-type vrf
+set routing-instances VPN-120 vrf-table-label
+set routing-instances VPN-120 interface ge-0/0/3.120
+set routing-instances VPN-120 route-distinguisher 200.0.0.6:120
+set routing-instances VPN-120 vrf-import VPN-120-IMPORT
+set routing-instances VPN-120 vrf-export VPN-120-EXPORT
+set routing-instances VPN-120 protocols bgp group ebgp-vpn peer-as 120
+set routing-instances VPN-120 protocols bgp group ebgp-vpn as-override
+set routing-instances VPN-120 protocols bgp group ebgp-vpn neighbor 200.200.220.2
+set routing-instances VPN-120 protocols bgp group ebgp-vpnv6 peer-as 120
+set routing-instances VPN-120 protocols bgp group ebgp-vpnv6 neighbor 2001:200:200:220::2
+set routing-instances VPN-120 protocols bgp group ebgp-vpnv6 as-override
+
+set policy-options policy-statement VPN-120-EXPORT term export then community add RT-VPN-120
+set policy-options policy-statement VPN-120-EXPORT term export then accept
+set policy-options policy-statement VPN-120-EXPORT then reject
+set policy-options policy-statement VPN-120-IMPORT term import from community RT-VPN-120
+set policy-options policy-statement VPN-120-IMPORT term import then accept
+set policy-options policy-statement VPN-120-IMPORT then reject
+set policy-options community RT-VPN-120 members target:200:120
+
+set interfaces ge-0/0/3 unit 130 vlan-id 130
+set interfaces ge-0/0/3 unit 130 family inet address 200.200.230.1/24
+set interfaces ge-0/0/3 unit 130 family inet6 address 2001:200:200:230::1/64
+
+set routing-instances VPN-130 instance-type vrf
+set routing-instances VPN-130 vrf-table-label
+set routing-instances VPN-130 interface ge-0/0/3.130
+set routing-instances VPN-130 route-distinguisher 200.0.0.6:130
+set routing-instances VPN-130 vrf-import VPN-130-IMPORT
+set routing-instances VPN-130 vrf-export VPN-130-EXPORT
+set routing-instances VPN-130 protocols bgp group ebgp-vpn peer-as 130
+set routing-instances VPN-130 protocols bgp group ebgp-vpn as-override
+set routing-instances VPN-130 protocols bgp group ebgp-vpn neighbor 200.200.230.2
+set routing-instances VPN-130 protocols bgp group ebgp-vpnv6 peer-as 130
+set routing-instances VPN-130 protocols bgp group ebgp-vpnv6 neighbor 2001:200:200:230::2
+set routing-instances VPN-130 protocols bgp group ebgp-vpnv6 as-override
+
+set policy-options policy-statement VPN-130-EXPORT term export then community add RT-VPN-130
+set policy-options policy-statement VPN-130-EXPORT term export then accept
+set policy-options policy-statement VPN-130-EXPORT then reject
+set policy-options policy-statement VPN-130-IMPORT term import from community RT-VPN-130
+set policy-options policy-statement VPN-130-IMPORT term import then accept
+set policy-options policy-statement VPN-130-IMPORT then reject
+set policy-options community RT-VPN-130 members target:200:130
+
+commit and-quit
+quit

@@ -1,0 +1,3 @@
+edit
+delete routing-options rib-groups RG-LOCAL-LOOPBACKS
+commit and-quit

@@ -1,0 +1,6 @@
+edit
+set interfaces ge-0/0/1 description "private21 :: mm4 (ge-0/0/1) -- mm3 (ge-0/0/1)"
+set interfaces ge-0/0/2 description "private23 :: mm4 (ge-0/0/2) -- cr4 (ge-0/0/1)"
+set interfaces ge-0/0/9 description "private98 :: mm4 (ge-0/0/9) -- mm2 (ge-0/0/9)"
+commit and-quit
+quit

@@ -1,0 +1,130 @@
+edit
+rollback
+set interfaces lo0 unit 110 family inet address 100.110.1.1/32
+set interfaces lo0 unit 110 family inet6 address 2100:110::1/128
+set interfaces lo0 unit 210 family inet address 100.210.1.1/32
+set interfaces lo0 unit 210 family inet6 address 2100:210::1/128
+set interfaces ge-0/0/1 unit 110 vlan-id 110
+set interfaces ge-0/0/1 unit 110 family inet address 100.100.110.2/24
+set interfaces ge-0/0/1 unit 110 family inet6 address 2001:100:100:110::2/64
+set interfaces ge-0/0/2 unit 110 vlan-id 110
+set interfaces ge-0/0/2 unit 110 family inet address 100.100.210.2/24
+set interfaces ge-0/0/2 unit 110 family inet6 address 2001:100:100:210::2/64
+
+set routing-instances VR-110 instance-type virtual-router
+set routing-instances VR-110 interface lo0.110
+set routing-instances VR-110 interface ge-0/0/1.110
+set routing-instances VR-110 routing-options autonomous-system 110 independent-domain
+set routing-instances VR-110 routing-options static route 100.110.0.0/16 discard
+set routing-instances VR-110 routing-options rib VR-110.inet6.0 static route 2100:110::/32 discard
+set routing-instances VR-110 protocols bgp group ebgp-vpn peer-as 100
+set routing-instances VR-110 protocols bgp group ebgp-vpn export advertise
+set routing-instances VR-110 protocols bgp group ebgp-vpn neighbor 100.100.110.1
+
+set routing-instances VR-110 protocols bgp group ebgp-vpnv6 peer-as 100
+set routing-instances VR-110 protocols bgp group ebgp-vpnv6 export advertise
+set routing-instances VR-110 protocols bgp group ebgp-vpnv6 neighbor 2001:100:100:110::1
+
+set routing-instances VR-210 instance-type virtual-router
+set routing-instances VR-210 interface lo0.210
+set routing-instances VR-210 interface ge-0/0/2.110
+set routing-instances VR-210 routing-options autonomous-system 110 independent-domain
+set routing-instances VR-210 routing-options static route 100.210.0.0/16 discard
+set routing-instances VR-210 routing-options rib VR-210.inet6.0 static route 2100:210::/32 discard
+set routing-instances VR-210 protocols bgp group ebgp-vpn peer-as 100
+set routing-instances VR-210 protocols bgp group ebgp-vpn export advertise
+set routing-instances VR-210 protocols bgp group ebgp-vpn neighbor 100.100.210.1
+
+set routing-instances VR-210 protocols bgp group ebgp-vpnv6 peer-as 100
+set routing-instances VR-210 protocols bgp group ebgp-vpnv6 export advertise
+set routing-instances VR-210 protocols bgp group ebgp-vpnv6 neighbor 2001:100:100:210::1
+
+set policy-options policy-statement advertise from protocol static
+set policy-options policy-statement advertise then accept
+
+set interfaces lo0 unit 120 family inet address 100.120.1.1/32
+set interfaces lo0 unit 120 family inet6 address 2100:120::1/128
+set interfaces lo0 unit 220 family inet address 100.220.1.1/32
+set interfaces lo0 unit 220 family inet6 address 2100:220::1/128
+set interfaces ge-0/0/1 unit 120 vlan-id 120
+set interfaces ge-0/0/1 unit 120 family inet address 100.100.120.2/24
+set interfaces ge-0/0/1 unit 120 family inet6 address 2001:100:100:120::2/64
+set interfaces ge-0/0/2 unit 120 vlan-id 120
+set interfaces ge-0/0/2 unit 120 family inet address 100.100.220.2/24
+set interfaces ge-0/0/2 unit 120 family inet6 address 2001:100:100:220::2/64
+
+set routing-instances VR-120 instance-type virtual-router
+set routing-instances VR-120 interface lo0.120
+set routing-instances VR-120 interface ge-0/0/1.120
+set routing-instances VR-120 routing-options autonomous-system 120 independent-domain
+set routing-instances VR-120 routing-options static route 100.120.0.0/16 discard
+set routing-instances VR-120 routing-options rib VR-120.inet6.0 static route 2100:120::/32 discard
+set routing-instances VR-120 protocols bgp group ebgp-vpn peer-as 100
+set routing-instances VR-120 protocols bgp group ebgp-vpn export advertise
+set routing-instances VR-120 protocols bgp group ebgp-vpn neighbor 100.100.120.1
+
+set routing-instances VR-120 protocols bgp group ebgp-vpnv6 peer-as 100
+set routing-instances VR-120 protocols bgp group ebgp-vpnv6 export advertise
+set routing-instances VR-120 protocols bgp group ebgp-vpnv6 neighbor 2001:100:100:120::1
+
+set routing-instances VR-220 instance-type virtual-router
+set routing-instances VR-220 interface lo0.220
+set routing-instances VR-220 interface ge-0/0/2.120
+set routing-instances VR-220 routing-options autonomous-system 120 independent-domain
+set routing-instances VR-220 routing-options static route 100.220.0.0/16 discard
+set routing-instances VR-220 routing-options rib VR-220.inet6.0 static route 2100:220::/32 discard
+set routing-instances VR-220 protocols bgp group ebgp-vpn peer-as 100
+set routing-instances VR-220 protocols bgp group ebgp-vpn export advertise
+set routing-instances VR-220 protocols bgp group ebgp-vpn neighbor 100.100.220.1
+
+set routing-instances VR-220 protocols bgp group ebgp-vpnv6 peer-as 100
+set routing-instances VR-220 protocols bgp group ebgp-vpnv6 export advertise
+set routing-instances VR-220 protocols bgp group ebgp-vpnv6 neighbor 2001:100:100:220::1
+
+set policy-options policy-statement advertise from protocol static
+set policy-options policy-statement advertise then accept
+
+set interfaces lo0 unit 130 family inet address 100.130.1.1/32
+set interfaces lo0 unit 130 family inet6 address 2100:130::1/128
+set interfaces lo0 unit 230 family inet address 100.230.1.1/32
+set interfaces lo0 unit 230 family inet6 address 2100:230::1/128
+set interfaces ge-0/0/1 unit 130 vlan-id 130
+set interfaces ge-0/0/1 unit 130 family inet address 100.100.130.2/24
+set interfaces ge-0/0/1 unit 130 family inet6 address 2001:100:100:130::2/64
+set interfaces ge-0/0/2 unit 130 vlan-id 130
+set interfaces ge-0/0/2 unit 130 family inet address 100.100.230.2/24
+set interfaces ge-0/0/2 unit 130 family inet6 address 2001:100:100:230::2/64
+
+set routing-instances VR-130 instance-type virtual-router
+set routing-instances VR-130 interface lo0.130
+set routing-instances VR-130 interface ge-0/0/1.130
+set routing-instances VR-130 routing-options autonomous-system 130 independent-domain
+set routing-instances VR-130 routing-options static route 100.130.0.0/16 discard
+set routing-instances VR-130 routing-options rib VR-130.inet6.0 static route 2100:130::/32 discard
+set routing-instances VR-130 protocols bgp group ebgp-vpn peer-as 100
+set routing-instances VR-130 protocols bgp group ebgp-vpn export advertise
+set routing-instances VR-130 protocols bgp group ebgp-vpn neighbor 100.100.130.1
+
+set routing-instances VR-130 protocols bgp group ebgp-vpnv6 peer-as 100
+set routing-instances VR-130 protocols bgp group ebgp-vpnv6 export advertise
+set routing-instances VR-130 protocols bgp group ebgp-vpnv6 neighbor 2001:100:100:130::1
+
+set routing-instances VR-230 instance-type virtual-router
+set routing-instances VR-230 interface lo0.230
+set routing-instances VR-230 interface ge-0/0/2.130
+set routing-instances VR-230 routing-options autonomous-system 130 independent-domain
+set routing-instances VR-230 routing-options static route 100.230.0.0/16 discard
+set routing-instances VR-230 routing-options rib VR-230.inet6.0 static route 2100:230::/32 discard
+set routing-instances VR-230 protocols bgp group ebgp-vpn peer-as 100
+set routing-instances VR-230 protocols bgp group ebgp-vpn export advertise
+set routing-instances VR-230 protocols bgp group ebgp-vpn neighbor 100.100.230.1
+
+set routing-instances VR-230 protocols bgp group ebgp-vpnv6 peer-as 100
+set routing-instances VR-230 protocols bgp group ebgp-vpnv6 export advertise
+set routing-instances VR-230 protocols bgp group ebgp-vpnv6 neighbor 2001:100:100:230::1
+
+set policy-options policy-statement advertise from protocol static
+set policy-options policy-statement advertise then accept
+
+commit and-quit
+quit

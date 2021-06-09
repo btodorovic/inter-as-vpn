@@ -1,0 +1,4 @@
+edit
+rollback 1
+commit and-quit
+quit

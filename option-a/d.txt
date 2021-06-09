@@ -1,0 +1,6 @@
+edit
+delete interfaces ge-0/0/9 unit 10 family mpls
+delete protocols mpls interface ge-0/0/9.0
+delete protocols bgp group inter-as
+commit and-quit
+quit
