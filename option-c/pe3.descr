@@ -1,6 +1,0 @@
-edit
-set interfaces ge-0/0/1 description "private25 :: pe3 (ge-0/0/1) -- cr3 (ge-0/0/3)"
-set interfaces ge-0/0/2 description "private27 :: pe3 (ge-0/0/2) -- pe4 (ge-0/0/2)"
-set interfaces ge-0/0/3 description "private28 :: pe3 (ge-0/0/3) -- bce (ge-0/0/1)"
-commit and-quit
-quit

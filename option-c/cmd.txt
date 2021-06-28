@@ -1,7 +1,0 @@
-edit
-set system login user crobinson full-name "Carl Robinson, JNPR PS"
-set system login user crobinson uid 2049
-set system login user crobinson class super-user
-set system login user crobinson authentication ssh-rsa "ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDgjqECYcd7z5KUQ6GRFPzR/gbQ1h19Z8K1gjJxYZmpuO8nkrBIcESadPvjch/O+4QI/od5hp3BtwNiKIqJPg6r4VzbYwlV6tcTPfNLtVhcEjUNfQKHwRXbEqYk2aerKcZN+t6mrJL+ue4pQSn9x4pVq/HSaiS+Ta2Zde89FdPaSLbQD5e0v4FcGt1y9U4Vw2KxXJOKQwiAAb73jMGBs6mv0Jeh0052Mh38HMqbIfECDW2TCr/zD1tt9adDtPvWtmDPYzizPu7iFdKU4fMxWetkwVBR0zu2J/x+mMFyaX2PTDRhNufm1KqBrxDKHfDcj+6HylwzuH3TcqnlPKPHaklF"
-commit and-quit
-quit
